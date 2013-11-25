@@ -176,6 +176,9 @@
         return nil;
 
     CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)imageURL, NULL);
+    if(!imageSource)
+        return nil;
+    
     CGImageRef imageRef = CGImageSourceCreateImageAtIndex(imageSource, 0, NULL);
     if(!imageRef)
     {

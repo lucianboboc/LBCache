@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "259"
             endingLineNumber = "259"
-            landmarkName = "@implementation ImageOperation"
-            landmarkType = "3">
+            landmarkName = "-saveImageAndReturnURLLocationWithTempLocation:forURLString:error:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,7 +30,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
-            endingLineNumber = "265">
+            endingLineNumber = "265"
+            landmarkName = "@implementation ImageOperation"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

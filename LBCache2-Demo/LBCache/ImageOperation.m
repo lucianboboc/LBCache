@@ -9,6 +9,7 @@
 #import "ImageOperation.h"
 #import "NSURLSession+LBcategory.h"
 #import "LBCache.h"
+#import <ImageIO/ImageIO.h>
 
 @interface ImageOperation () <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 @property (strong, nonatomic) NSURLSession *sesstion;
@@ -141,7 +142,7 @@
 
             if(imageURL)
             {
-                UIImage *image = [[UIImage alloc] initWithContentsOfFile: [imageURL path]];
+                UIImage *image = [self createImageWithContentsOfURL: imageURL];
                 if(image)
                     self.imageBlock(image, nil);
                 else
@@ -169,7 +170,33 @@
 
 
 
+- (UIImage *) createImageWithContentsOfURL: (NSURL *) imageURL
+{
+    if(!imageURL)
+        return nil;
 
+    CGImageSourceRef imageSource = CGImageSourceCreateWithURL((__bridge CFURLRef)imageURL, NULL);
+    CGImageRef imageRef = CGImageSourceCreateImageAtIndex(imageSource, 0, NULL);
+    if(!imageRef)
+    {
+        if(imageSource)
+            CFRelease(imageSource);
+        return nil;
+    }
+    else
+    {
+        UIImage *img = [[UIImage alloc] initWithCGImage: imageRef];
+
+        CFRelease(imageRef);
+        if(imageSource)
+            CFRelease(imageSource);
+        
+        if(img)
+            return img;
+        else
+            return nil;
+    }
+}
 
 
 

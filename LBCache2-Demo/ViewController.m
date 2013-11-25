@@ -78,7 +78,7 @@
     __weak UIImageView *weakImgView = cell.imgView;
     
     [cell.imgView setImageWithURLString: self.array[indexPath.row] placeholderImage: nil options: LBCacheImageOptionsDefault progressBlock:^(NSUInteger percent) {
-        NSLog(@"percent: %u",percent);
+//        NSLog(@"percent: %u",percent);
     } completionBlock:^(UIImage * image, NSError * error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             weakImgView.image = image;

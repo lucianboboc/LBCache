@@ -28,6 +28,7 @@
 		671EC89E178577AA002886A9 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 671EC89D178577AA002886A9 /* libobjc.dylib */; };
 		6751326A17D4860D00290D2D /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 6751326817D4860D00290D2D /* LICENSE.md */; };
 		6751326B17D4860D00290D2D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6751326917D4860D00290D2D /* README.md */; };
+		67A4DF411843AAAF00008A74 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A4DF401843AAAF00008A74 /* ImageIO.framework */; };
 		67C66B33183D18F400BCBE38 /* NSURLSession+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C66B32183D18F400BCBE38 /* NSURLSession+LBcategory.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		671EC89D178577AA002886A9 /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
 		6751326817D4860D00290D2D /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = SOURCE_ROOT; };
 		6751326917D4860D00290D2D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
+		67A4DF401843AAAF00008A74 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		67C66B31183D18F400BCBE38 /* NSURLSession+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+LBcategory.h"; sourceTree = "<group>"; };
 		67C66B32183D18F400BCBE38 /* NSURLSession+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+LBcategory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67A4DF411843AAAF00008A74 /* ImageIO.framework in Frameworks */,
 				258399EC178B479A005BADA3 /* Security.framework in Frameworks */,
 				671EC89E178577AA002886A9 /* libobjc.dylib in Frameworks */,
 				25C65F36175D39F100AE8FFC /* UIKit.framework in Frameworks */,
@@ -115,6 +118,7 @@
 		25C65F34175D39F100AE8FFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				67A4DF401843AAAF00008A74 /* ImageIO.framework */,
 				671EC89D178577AA002886A9 /* libobjc.dylib */,
 				258399EB178B479A005BADA3 /* Security.framework */,
 				25C65F35175D39F100AE8FFC /* UIKit.framework */,

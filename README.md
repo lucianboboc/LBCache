@@ -7,7 +7,7 @@ LBCache is an image caching library for iOS
 How to use this library:
 =======
 - drag the <code>LBCache</code> folder to your project.
-- import <code>Security</code> framework and <code>libobjc.dylib</code> library from Xcode.
+- import <code>Security</code>, <code>ImageIO</code> frameworks and <code>libobjc.dylib</code> library from Xcode.
 - import the <code>"UIImageView+LBcategory.h"</code>
 - optional, if needed (import <code>LBCache.h, NSURLSession+LBcategory, NSString+LBcategory, NSData+LBcategory</code>).
 

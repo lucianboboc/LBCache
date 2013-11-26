@@ -42,7 +42,7 @@
 #if DEBUG
                 NSLog(@"REQUEST URL %@ \nERROR: %@", urlString, error.localizedDescription);
 #endif
-                completionBlock(nil,nil,theResponse,error);
+                completionBlock(nil,nil,nil,error);
             }
         }
         else
@@ -56,7 +56,10 @@
                     if(!image)
                     {
                         NSError *error = [NSError errorWithDomain: @"LBErrorDomain" code: 0 userInfo: @{NSLocalizedDescriptionKey: @"The image can't be created from NSData."}];
-                        completionBlock(nil,nil,theResponse,error);
+#if DEBUG
+                        NSLog(@"REQUEST URL %@ statusCode: %u", urlString, theResponse.statusCode);
+#endif
+                        completionBlock(nil,nil,nil,error);
                     }
                     else
                         completionBlock(image,data,theResponse,nil);
@@ -64,7 +67,10 @@
                 else
                 {
                     NSError *error = [NSError errorWithDomain: NSURLErrorDomain code: statusCode userInfo: nil];
-                    completionBlock(nil,nil,theResponse,error);
+#if DEBUG
+                    NSLog(@"REQUEST URL %@ statusCode: %u", urlString, theResponse.statusCode);
+#endif
+                    completionBlock(nil,nil,nil,error);
                 }
             }
         }
@@ -114,35 +120,34 @@
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest: request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
+           
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        });
         
-        NSHTTPURLResponse *theResponse = (NSHTTPURLResponse *)response;
-        
-        if(error != nil)
-        {
-            if(completionBlock)
+            if(error != nil)
             {
-#if DEBUG
-                NSLog(@"REQUEST URL %@ \nERROR: %@", urlString, error.localizedDescription);
-#endif
-                completionBlock(nil,data,theResponse,error);
-            }
-        }
-        else
-        {
-            if(completionBlock)
-            {
-                NSInteger statusCode = theResponse.statusCode;
-                if(statusCode < 400)
+                if(completionBlock)
                 {
-                    id object = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
-                    if(error != nil)
+#if DEBUG
+                    NSLog(@"REQUEST URL %@ \nERROR: %@", urlString, error.localizedDescription);
+#endif
+                    completionBlock(nil,data,nil,error);
+                }
+            }
+            else
+            {
+                if(completionBlock)
+                {
+                    NSHTTPURLResponse *theResponse = (NSHTTPURLResponse *)response;
+
+                    NSError *jsonError = nil;
+                    id object = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error: &jsonError];
+                    if(jsonError != nil)
                     {
 #if DEBUG
-                        NSLog(@"REQUEST URL %@ \nJSON ERROR: %@", urlString, error.localizedDescription);
+                        NSLog(@"REQUEST URL %@ \nJSON ERROR: %@", urlString, jsonError.localizedDescription);
+                        NSLog(@"REQUEST URL %@ statusCode: %u \nSTRING: %@", urlString, theResponse.statusCode, [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding]);
 #endif
-                        completionBlock(nil,data,theResponse,error);
+                        completionBlock(nil,data,nil,jsonError);
                     }
                     else
                     {
@@ -152,18 +157,12 @@
                         completionBlock(object,data,theResponse,nil);
                     }
                 }
-                else
-                {
-                    NSError *error = [NSError errorWithDomain: NSURLErrorDomain code: statusCode userInfo: nil];
-                    completionBlock(nil,nil,theResponse,error);
-                }
             }
-        }
-        
+        });
     }];
-     
-     [task resume];
-     return task;
+
+    [task resume];
+    return task;
 }
 
 
@@ -218,35 +217,34 @@
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest: request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        });
-        
-        NSHTTPURLResponse *theResponse = (NSHTTPURLResponse *)response;
-        
-        if(error != nil)
-        {
-            if(completionBlock)
+            
+            if(error != nil)
             {
-#if DEBUG
-                NSLog(@"REQUEST URL %@ \nERROR: %@", urlString, error.localizedDescription);
-#endif
-                completionBlock(nil,nil,theResponse,error);
-            }
-        }
-        else
-        {
-            if(completionBlock)
-            {
-                NSInteger statusCode = theResponse.statusCode;
-                if(statusCode < 400)
+                if(completionBlock)
                 {
-                    id object = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error:&error];
-                    if(error != nil)
+#if DEBUG
+                    NSLog(@"REQUEST URL %@ \nERROR: %@", urlString, error.localizedDescription);
+#endif
+                    completionBlock(nil,data,nil,error);
+                }
+            }
+            else
+            {
+                if(completionBlock)
+                {
+                    NSHTTPURLResponse *theResponse = (NSHTTPURLResponse *)response;
+                    
+                    NSError *jsonError = nil;
+                    id object = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers | NSJSONReadingAllowFragments error: &jsonError];
+                    if(jsonError != nil)
                     {
 #if DEBUG
-                        NSLog(@"REQUEST URL %@ \nJSON ERROR: %@", urlString, error.localizedDescription);
+                        NSLog(@"REQUEST URL %@ \nJSON ERROR: %@", urlString, jsonError.localizedDescription);
+                        NSLog(@"REQUEST URL %@ statusCode: %u \nSTRING: %@", urlString, theResponse.statusCode, [[NSString alloc] initWithData:data encoding: NSUTF8StringEncoding]);
 #endif
-                        completionBlock(nil,data,theResponse,error);
+                        completionBlock(nil,data,nil,jsonError);
                     }
                     else
                     {
@@ -256,14 +254,8 @@
                         completionBlock(object,data,theResponse,nil);
                     }
                 }
-                else
-                {
-                    NSError *error = [NSError errorWithDomain: NSURLErrorDomain code: statusCode userInfo: nil];
-                    completionBlock(nil,nil,theResponse,error);
-                }
             }
-        }
-        
+        });
     }];
     
     [task resume];

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		258399EA178B4583005BADA3 /* NSData+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 258399E9178B4583005BADA3 /* NSData+LBcategory.m */; };
 		258399EC178B479A005BADA3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258399EB178B479A005BADA3 /* Security.framework */; };
 		25C65F36175D39F100AE8FFC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C65F35175D39F100AE8FFC /* UIKit.framework */; };
 		25C65F38175D39F100AE8FFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C65F37175D39F100AE8FFC /* Foundation.framework */; };
@@ -20,21 +19,20 @@
 		25C65F4C175D39F100AE8FFC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C65F4B175D39F100AE8FFC /* Default-568h@2x.png */; };
 		25C65F4F175D39F100AE8FFC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25C65F4D175D39F100AE8FFC /* MainStoryboard.storyboard */; };
 		25C65F52175D39F100AE8FFC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C65F51175D39F100AE8FFC /* ViewController.m */; };
-		25C65F63175D39FD00AE8FFC /* ImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C65F5A175D39FD00AE8FFC /* ImageOperation.m */; };
-		25C65F64175D39FD00AE8FFC /* LBCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C65F5C175D39FD00AE8FFC /* LBCache.m */; };
-		25C65F65175D39FD00AE8FFC /* NSString+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C65F5E175D39FD00AE8FFC /* NSString+LBcategory.m */; };
-		25C65F67175D39FD00AE8FFC /* UIImageView+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C65F62175D39FD00AE8FFC /* UIImageView+LBcategory.m */; };
 		25C65F6A175D3A2400AE8FFC /* MyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C65F69175D3A2400AE8FFC /* MyCell.m */; };
 		671EC89E178577AA002886A9 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 671EC89D178577AA002886A9 /* libobjc.dylib */; };
 		6751326A17D4860D00290D2D /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 6751326817D4860D00290D2D /* LICENSE.md */; };
 		6751326B17D4860D00290D2D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6751326917D4860D00290D2D /* README.md */; };
 		67A4DF411843AAAF00008A74 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67A4DF401843AAAF00008A74 /* ImageIO.framework */; };
-		67C66B33183D18F400BCBE38 /* NSURLSession+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C66B32183D18F400BCBE38 /* NSURLSession+LBcategory.m */; };
+		67F123C41844ECF6008F01BD /* ImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123B81844ECF6008F01BD /* ImageOperation.m */; };
+		67F123C51844ECF6008F01BD /* LBCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123BA1844ECF6008F01BD /* LBCache.m */; };
+		67F123C61844ECF6008F01BD /* NSData+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123BD1844ECF6008F01BD /* NSData+LBcategory.m */; };
+		67F123C71844ECF6008F01BD /* NSString+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123BF1844ECF6008F01BD /* NSString+LBcategory.m */; };
+		67F123C81844ECF6008F01BD /* NSURLSession+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123C11844ECF6008F01BD /* NSURLSession+LBcategory.m */; };
+		67F123C91844ECF6008F01BD /* UIImageView+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123C31844ECF6008F01BD /* UIImageView+LBcategory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		258399E8178B4583005BADA3 /* NSData+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+LBcategory.h"; sourceTree = "<group>"; };
-		258399E9178B4583005BADA3 /* NSData+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+LBcategory.m"; sourceTree = "<group>"; };
 		258399EB178B479A005BADA3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		25C65F32175D39F100AE8FFC /* LBCache2-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBCache2-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C65F35175D39F100AE8FFC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -52,22 +50,25 @@
 		25C65F4E175D39F100AE8FFC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		25C65F50175D39F100AE8FFC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		25C65F51175D39F100AE8FFC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		25C65F59175D39FD00AE8FFC /* ImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageOperation.h; sourceTree = "<group>"; };
-		25C65F5A175D39FD00AE8FFC /* ImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageOperation.m; sourceTree = "<group>"; };
-		25C65F5B175D39FD00AE8FFC /* LBCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCache.h; sourceTree = "<group>"; };
-		25C65F5C175D39FD00AE8FFC /* LBCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCache.m; sourceTree = "<group>"; };
-		25C65F5D175D39FD00AE8FFC /* NSString+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LBcategory.h"; sourceTree = "<group>"; };
-		25C65F5E175D39FD00AE8FFC /* NSString+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBcategory.m"; sourceTree = "<group>"; };
-		25C65F61175D39FD00AE8FFC /* UIImageView+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBcategory.h"; sourceTree = "<group>"; };
-		25C65F62175D39FD00AE8FFC /* UIImageView+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBcategory.m"; sourceTree = "<group>"; };
 		25C65F68175D3A2400AE8FFC /* MyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCell.h; sourceTree = "<group>"; };
 		25C65F69175D3A2400AE8FFC /* MyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCell.m; sourceTree = "<group>"; };
 		671EC89D178577AA002886A9 /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
 		6751326817D4860D00290D2D /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = SOURCE_ROOT; };
 		6751326917D4860D00290D2D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		67A4DF401843AAAF00008A74 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		67C66B31183D18F400BCBE38 /* NSURLSession+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+LBcategory.h"; sourceTree = "<group>"; };
-		67C66B32183D18F400BCBE38 /* NSURLSession+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+LBcategory.m"; sourceTree = "<group>"; };
+		67F123B71844ECF6008F01BD /* ImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageOperation.h; sourceTree = "<group>"; };
+		67F123B81844ECF6008F01BD /* ImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageOperation.m; sourceTree = "<group>"; };
+		67F123B91844ECF6008F01BD /* LBCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCache.h; sourceTree = "<group>"; };
+		67F123BA1844ECF6008F01BD /* LBCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCache.m; sourceTree = "<group>"; };
+		67F123BB1844ECF6008F01BD /* LBCacheHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCacheHeaders.h; sourceTree = "<group>"; };
+		67F123BC1844ECF6008F01BD /* NSData+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+LBcategory.h"; sourceTree = "<group>"; };
+		67F123BD1844ECF6008F01BD /* NSData+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+LBcategory.m"; sourceTree = "<group>"; };
+		67F123BE1844ECF6008F01BD /* NSString+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LBcategory.h"; sourceTree = "<group>"; };
+		67F123BF1844ECF6008F01BD /* NSString+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBcategory.m"; sourceTree = "<group>"; };
+		67F123C01844ECF6008F01BD /* NSURLSession+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+LBcategory.h"; sourceTree = "<group>"; };
+		67F123C11844ECF6008F01BD /* NSURLSession+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+LBcategory.m"; sourceTree = "<group>"; };
+		67F123C21844ECF6008F01BD /* UIImageView+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBcategory.h"; sourceTree = "<group>"; };
+		67F123C31844ECF6008F01BD /* UIImageView+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBcategory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,17 +88,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		258399ED178B47A9005BADA3 /* LBEncryption */ = {
-			isa = PBXGroup;
-			children = (
-				25C65F5D175D39FD00AE8FFC /* NSString+LBcategory.h */,
-				25C65F5E175D39FD00AE8FFC /* NSString+LBcategory.m */,
-				258399E8178B4583005BADA3 /* NSData+LBcategory.h */,
-				258399E9178B4583005BADA3 /* NSData+LBcategory.m */,
-			);
-			name = LBEncryption;
-			sourceTree = "<group>";
-		};
 		25C65F29175D39F100AE8FFC = {
 			isa = PBXGroup;
 			children = (
@@ -131,9 +121,9 @@
 		25C65F3B175D39F100AE8FFC /* LBCache-Demo */ = {
 			isa = PBXGroup;
 			children = (
-				25C65F58175D39FD00AE8FFC /* LBCache */,
 				25C65F44175D39F100AE8FFC /* AppDelegate.h */,
 				25C65F45175D39F100AE8FFC /* AppDelegate.m */,
+				67F123B61844ECF6008F01BD /* LBCache */,
 				25C65F4D175D39F100AE8FFC /* MainStoryboard.storyboard */,
 				25C65F50175D39F100AE8FFC /* ViewController.h */,
 				25C65F51175D39F100AE8FFC /* ViewController.m */,
@@ -161,18 +151,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		25C65F58175D39FD00AE8FFC /* LBCache */ = {
+		67F123B61844ECF6008F01BD /* LBCache */ = {
 			isa = PBXGroup;
 			children = (
-				258399ED178B47A9005BADA3 /* LBEncryption */,
-				25C65F5B175D39FD00AE8FFC /* LBCache.h */,
-				25C65F5C175D39FD00AE8FFC /* LBCache.m */,
-				25C65F59175D39FD00AE8FFC /* ImageOperation.h */,
-				25C65F5A175D39FD00AE8FFC /* ImageOperation.m */,
-				25C65F61175D39FD00AE8FFC /* UIImageView+LBcategory.h */,
-				25C65F62175D39FD00AE8FFC /* UIImageView+LBcategory.m */,
-				67C66B31183D18F400BCBE38 /* NSURLSession+LBcategory.h */,
-				67C66B32183D18F400BCBE38 /* NSURLSession+LBcategory.m */,
+				67F123B71844ECF6008F01BD /* ImageOperation.h */,
+				67F123B81844ECF6008F01BD /* ImageOperation.m */,
+				67F123B91844ECF6008F01BD /* LBCache.h */,
+				67F123BA1844ECF6008F01BD /* LBCache.m */,
+				67F123BB1844ECF6008F01BD /* LBCacheHeaders.h */,
+				67F123BC1844ECF6008F01BD /* NSData+LBcategory.h */,
+				67F123BD1844ECF6008F01BD /* NSData+LBcategory.m */,
+				67F123BE1844ECF6008F01BD /* NSString+LBcategory.h */,
+				67F123BF1844ECF6008F01BD /* NSString+LBcategory.m */,
+				67F123C01844ECF6008F01BD /* NSURLSession+LBcategory.h */,
+				67F123C11844ECF6008F01BD /* NSURLSession+LBcategory.m */,
+				67F123C21844ECF6008F01BD /* UIImageView+LBcategory.h */,
+				67F123C31844ECF6008F01BD /* UIImageView+LBcategory.m */,
 			);
 			path = LBCache;
 			sourceTree = "<group>";
@@ -246,15 +240,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C65F42175D39F100AE8FFC /* main.m in Sources */,
-				67C66B33183D18F400BCBE38 /* NSURLSession+LBcategory.m in Sources */,
+				67F123C61844ECF6008F01BD /* NSData+LBcategory.m in Sources */,
 				25C65F46175D39F100AE8FFC /* AppDelegate.m in Sources */,
 				25C65F52175D39F100AE8FFC /* ViewController.m in Sources */,
-				25C65F63175D39FD00AE8FFC /* ImageOperation.m in Sources */,
-				25C65F64175D39FD00AE8FFC /* LBCache.m in Sources */,
-				25C65F65175D39FD00AE8FFC /* NSString+LBcategory.m in Sources */,
-				25C65F67175D39FD00AE8FFC /* UIImageView+LBcategory.m in Sources */,
+				67F123C91844ECF6008F01BD /* UIImageView+LBcategory.m in Sources */,
+				67F123C81844ECF6008F01BD /* NSURLSession+LBcategory.m in Sources */,
 				25C65F6A175D3A2400AE8FFC /* MyCell.m in Sources */,
-				258399EA178B4583005BADA3 /* NSData+LBcategory.m in Sources */,
+				67F123C51844ECF6008F01BD /* LBCache.m in Sources */,
+				67F123C41844ECF6008F01BD /* ImageOperation.m in Sources */,
+				67F123C71844ECF6008F01BD /* NSString+LBcategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

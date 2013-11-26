@@ -1,0 +1,109 @@
+LBCache
+=======
+ 
+LBCache is an image caching library for iOS
+ 
+ 
+How to use this library:
+=======
+- drag the <code>LBCache</code> folder to your project.
+- import <code>Security</code> framework and <code>libobjc.dylib</code> library from Xcode.
+- import the <code>"UIImageView+LBcategory.h"</code>
+- optional, if needed (import <code>LBCache.h, NSURLConnection+LBcategory, NSString+LBcategory, NSData+LBcategory</code>).
+
+
+This library offer:
+=======
+- asynchronous image download;
+- cache support (memory and disk) with the option to set the days to keep the cache on disk;
+- option to get the local path to an image.
+- upload,download JSON data from the web.
+- create MD5,SHA1,SHA256 hash and hmac.
+- encrypt/decrypt nstring/data.
+- create an initialization vector.
+- encode/decode base64.
+ 
+ 
+Classes to use:
+======= 
+I. UIImageView+LBcategory:
+-------
+- this UIImageView category offer the option to set a URL string of the image location on the server;
+- the image is downloaded asynchrnous in the background;
+- the image is saved on the disk in the caches directory;
+
+Methods to use:
+- <code>setImageURLString:placeholderImage:</code> - download and cache the image
+- <code>setImageURLString:placeholderImage:options:</code> - download and cache the image
+- <code>setImageURLString:placeholderImage:options:completionBlock:</code> - download, cache and return the image
+- <code>imageForURLString:</code> - search the UIImage directly in cache (memory or disk), nil is returned if not found
+
+
+There are 3 options to use:
+- <code>LBCacheImageOptionsDefault</code> - it first search the memory cache, if not found it search on the disk, if not found it will download asynchronous and cache it
+- <code>LBCacheImageOptionsLoadOnlyFromWebIgnoreCache</code> - it will ignore the cache and download every time from the web
+- <code>LBCacheImageOptionsLoadOnlyFromCache</code> - it will only search in memory and on the disk
+
+
+
+II. LBCache:
+-------
+- this class is used by the UIImageView category for the download but you can use it directly.
+
+Options to use:
+- <code>kDaysToKeepCache</code> - stores the days to keep the images in cache
+- <code>kDefaultHashType</code> - stores the hash type declared in the <code>NSString+LBcategory.h</code> category and it has 3 values: <code>HashTypeMD5, HashTypeSHA1, HashTypeSHA256</code>
+ 
+Methods to use:
+- <code>imagePathLocationForURLString:</code> - a string with the local path location of the image saved on disk or nil if the image for the URLString is not found
+- <code>downloadImageFromURLString:options:completionBlock:</code> - same as UIImageView+Lbcategory, cache and return the image
+- <code>imageForURLString:</code> - same as UIImageView+LBcategory, search the UIImage directly in cache (memory or disk), nil is returned if not found
+
+ 
+III. NSURLConnection+LBcategory:
+-------
+- this class is used by the LBCache to download the UIImage/NSData from a URL but it can also be used to work with a web API.
+- an error domain was created for this class category, check NSURLConnection+LBcategory.h for more details.
+ 
+Methods to use:
+- <code>sendAsynchronousImageRequestUsingURLString:completionBlock:</code> - async download an image from the web.
+- <code>sendAsynchronousRequestUsingURLString:stringHTTPBody:method:completionBlock:</code> - this method can be used for GET requests (pass nil for stringHTTPBody parameter) or POST requests (pass the stringHTTPBody string to be set as HTTPBody (<code> Content-Type -> application/x-www-form-urlencoded </code>).
+<code>sendAsynchronousRequestUsingURLString:objectHTTPBody:method:completionBlock:</code> - this method can be used for GET requests (pass nil for objectHTTPBody parameter) or POST requests (pass the objectHTTPBody object (<code>NSArray</code> or <code>NSDictionary</code> which is serialized into a <code>JSON</code> and set as HTTPBody).
+
+ 
+IV. NSString+LBcategory:
+-------
+- use this class category to get hash value from a string or to encrypt/decrypt data.
+- there are 3 options available, <code>MD5, SHA1 and SHA256</code>
+
+Methods to use:
+- <code>lbHashMD5</code> - create an MD5 hash
+- <code>lbHashSHA1</code> - create an SHA1 hash
+- <code>lbHashSHA256</code> - create an SHA256 hash
+- <code>lbHashWithType:</code> - create a hash using the 3 available options
+- <code>lbHashMacWithKey:</code> - create a hash Message Authentication Code using a Key
+- <code>encryptedWithAESUsingKey:andIV:</code> - encrypt data using a Key and IV
+- <code>decryptedWithAESUsingKey:andIV:</code> - decrypt data using a Key and IV
+
+ 
+V. NSData+LBcategory:
+-------
+- use this category to encrypt/decrypt data, create initialization vector for ecryption and encode in base64
+
+Methods to use:
+- <code>base64Encoding</code> - encode base64
+- <code>dataWithBase64EncodedString: </code> - decode base64 string
+- <code> initializationVectorOfLength: </code> - get initialization vector, random generated bytes using SecRandomCopyBytes
+- <code> defaultInitializationVector </code> - get initialization vector, random generated bytes using SecRandomCopyBytes
+- <code>encryptedWithAESUsingKey:andIV:</code> - encrypt data using a Key and IV
+- <code>decryptedWithAESUsingKey:andIV:</code> - decrypt data using a Key and IV
+ 
+
+
+LICENSE
+=======
+
+This content is released under the MIT License https://github.com/lucianboboc/LBCache/blob/master/LICENSE.md
+ 
+
+Enjoy!

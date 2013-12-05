@@ -24,6 +24,10 @@
 
 @implementation ImageOperation
 
+- (void) dealloc{
+    [_sesstion invalidateAndCancel];
+}
+
 - (id) initWithURLString: (NSString *) urlString progressBlock:(ProgressBlock)progressBlock completionBlock: (LBCacheOperationBlock) completionBlock
 {
     self = [super init];

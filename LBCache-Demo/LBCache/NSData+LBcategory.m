@@ -28,7 +28,7 @@ static char encodingTable[64] =
 
 - (id)initWithBase64EncodedString:(NSString *)string {
     NSMutableData *mutableData = nil;
-    
+
     if( string )
     {
         unsigned long ixtext = 0;
@@ -40,18 +40,18 @@ static char encodingTable[64] =
         BOOL flendtext = NO;
         NSData *base64Data = nil;
         const unsigned char *base64Bytes = nil;
-        
+
         base64Data = [string dataUsingEncoding:NSASCIIStringEncoding];
         base64Bytes = [base64Data bytes];
         mutableData = [NSMutableData dataWithCapacity:base64Data.length];
         lentext = base64Data.length;
-        
+
         while( YES )
         {
             if( ixtext >= lentext ) break;
             ch = base64Bytes[ixtext++];
             flignore = NO;
-            
+
             if( ( ch >= 'A' ) && ( ch <= 'Z' ) ) ch = ch - 'A';
             else if( ( ch >= 'a' ) && ( ch <= 'z' ) ) ch = ch - 'a' + 26;
             else if( ( ch >= '0' ) && ( ch <= '9' ) ) ch = ch - '0' + 52;
@@ -59,12 +59,12 @@ static char encodingTable[64] =
             else if( ch == '=' ) flendtext = YES;
             else if( ch == '/' ) ch = 63;
             else flignore = YES;
-            
+
             if( ! flignore )
             {
                 short ctcharsinbuf = 3;
                 BOOL flbreak = NO;
-                
+
                 if( flendtext )
                 {
                     if( ! ixinbuf ) break;
@@ -73,25 +73,25 @@ static char encodingTable[64] =
                     ixinbuf = 3;
                     flbreak = YES;
                 }
-                
+
                 inbuf [ixinbuf++] = ch;
-                
+
                 if( ixinbuf == 4 )
                 {
                     ixinbuf = 0;
                     outbuf [0] = ( inbuf[0] << 2 ) | ( ( inbuf[1] & 0x30) >> 4 );
                     outbuf [1] = ( ( inbuf[1] & 0x0F ) << 4 ) | ( ( inbuf[2] & 0x3C ) >> 2 );
                     outbuf [2] = ( ( inbuf[2] & 0x03 ) << 6 ) | ( inbuf[3] & 0x3F );
-                    
+
                     for( i = 0; i < ctcharsinbuf; i++ )
                         [mutableData appendBytes:&outbuf[i] length:1];
                 }
-                
+
                 if( flbreak )  break;
             }
         }
     }
-    
+
     self = [self initWithData:mutableData];
     return self;
 }
@@ -110,25 +110,25 @@ static char encodingTable[64] =
     unsigned short i = 0;
     unsigned short charsonline = 0, ctcopy = 0;
     unsigned long ix = 0;
-    
+
     while( YES )
     {
         ctremaining = lentext - ixtext;
         if( ctremaining <= 0 ) break;
-        
+
         for( i = 0; i < 3; i++ )
         {
             ix = ixtext + i;
             if( ix < lentext ) inbuf[i] = bytes[ix];
             else inbuf [i] = 0;
         }
-        
+
         outbuf [0] = (inbuf [0] & 0xFC) >> 2;
         outbuf [1] = ((inbuf [0] & 0x03) << 4) | ((inbuf [1] & 0xF0) >> 4);
         outbuf [2] = ((inbuf [1] & 0x0F) << 2) | ((inbuf [2] & 0xC0) >> 6);
         outbuf [3] = inbuf [2] & 0x3F;
         ctcopy = 4;
-        
+
         switch( ctremaining )
         {
             case 1:
@@ -138,16 +138,16 @@ static char encodingTable[64] =
                 ctcopy = 3;
                 break;
         }
-        
+
         for( i = 0; i < ctcopy; i++ )
             [result appendFormat:@"%c", encodingTable[outbuf[i]]];
-        
+
         for( i = ctcopy; i < 4; i++ )
             [result appendString:@"="];
-        
+
         ixtext += 3;
         charsonline += 4;
-        
+
         if( lineLength > 0 )
         {
             if( charsonline >= lineLength )
@@ -157,7 +157,7 @@ static char encodingTable[64] =
             }
         }
     }
-    
+
     return [NSString stringWithString:result];
 }
 
@@ -183,13 +183,13 @@ static char encodingTable[64] =
 
 
 - (NSData*)encryptedWithAESUsingKey:(NSString*)key andIV:(NSData*)iv {
-    
+
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     size_t dataMoved;
-    // output will always be the input size + one aditional block size based on the encryption algorithm.    
+    // output will always be the input size + one aditional block size based on the encryption algorithm.
     NSMutableData *encryptedData = [NSMutableData dataWithLength: self.length + kCCBlockSizeAES128];
-    
+
     CCCryptorStatus status = CCCrypt(kCCEncrypt,
                                      kCCAlgorithmAES128,
                                      kCCOptionPKCS7Padding,
@@ -201,24 +201,24 @@ static char encodingTable[64] =
                                      encryptedData.mutableBytes,
                                      encryptedData.length,
                                      &dataMoved);
-    
+
     if (status == kCCSuccess) {
         encryptedData.length = dataMoved;
         return encryptedData;
     }
-    
+
     return nil;
-    
+
 }
 
 - (NSData*)decryptedWithAESUsingKey:(NSString*)key andIV:(NSData*)iv {
-    
+
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
-    
+
     size_t dataMoved;
     // output will always be the input size + one aditional block size based on the encryption algorithm.
     NSMutableData *decryptedData = [NSMutableData dataWithLength: self.length + kCCBlockSizeAES128];
-    
+
     CCCryptorStatus result = CCCrypt(kCCDecrypt,
                                      kCCAlgorithmAES128,
                                      kCCOptionPKCS7Padding,
@@ -230,14 +230,14 @@ static char encodingTable[64] =
                                      decryptedData.mutableBytes,
                                      decryptedData.length,
                                      &dataMoved);
-    
+
     if (result == kCCSuccess) {
         decryptedData.length = dataMoved;
         return decryptedData;
     }
-    
+
     return nil;
-    
+
 }
 
 
@@ -264,17 +264,17 @@ static char encodingTable[64] =
     if (length == 0) {
         length = kCCBlockSizeAES128;
     }
-    
+
     NSMutableData *iv = [NSMutableData dataWithLength: length];
-    
+
     int ivResult = SecRandomCopyBytes(kSecRandomDefault,
                                       length,
                                       iv.mutableBytes);
-    
+
     if (ivResult == noErr) {
         return iv;
     }
-    
+
     return nil;
 }
 
@@ -324,13 +324,13 @@ static char encodingTable[64] =
 {
     if(!self)
         return nil;
-    
+
     const char *str = [self bytes];
     if(!str)
         return nil;
-    
+
     NSInteger bufferSize;
-    
+
     switch (hashType) {
         case DataHashTypeMD5:
             bufferSize = CC_MD5_DIGEST_LENGTH;
@@ -345,29 +345,29 @@ static char encodingTable[64] =
             return nil;
             break;
     }
-    
+
     unsigned char buffer[bufferSize];
-    
+
     switch (hashType) {
         case DataHashTypeMD5:
-            CC_MD5(str, strlen(str), buffer);
+            CC_MD5(str, (CC_LONG)strlen(str), buffer);
             break;
         case DataHashTypeSHA1:
-            CC_SHA1(str, strlen(str), buffer);
+            CC_SHA1(str, (CC_LONG)strlen(str), buffer);
             break;
         case DataHashTypeSHA256:
-            CC_SHA256(str, strlen(str), buffer);
+            CC_SHA256(str, (CC_LONG)strlen(str), buffer);
             break;
         default:
             return nil;
             break;
     }
-    
+
     NSMutableString *hashString = [[NSMutableString alloc] initWithCapacity: bufferSize * 2];
     for(int i = 0; i < bufferSize; i++){
         [hashString appendFormat:@"%02x",buffer[i]];
     }
-    
+
     return hashString;
 }
 

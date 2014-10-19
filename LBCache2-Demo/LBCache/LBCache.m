@@ -7,7 +7,6 @@
 //
 
 #import "LBCache.h"
-#import "NSURLSession+LBcategory.h"
 #import "ImageOperation.h"
 
 @interface LBCache ()

@@ -28,7 +28,6 @@
 		67F123C51844ECF6008F01BD /* LBCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123BA1844ECF6008F01BD /* LBCache.m */; };
 		67F123C61844ECF6008F01BD /* NSData+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123BD1844ECF6008F01BD /* NSData+LBcategory.m */; };
 		67F123C71844ECF6008F01BD /* NSString+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123BF1844ECF6008F01BD /* NSString+LBcategory.m */; };
-		67F123C81844ECF6008F01BD /* NSURLSession+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123C11844ECF6008F01BD /* NSURLSession+LBcategory.m */; };
 		67F123C91844ECF6008F01BD /* UIImageView+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 67F123C31844ECF6008F01BD /* UIImageView+LBcategory.m */; };
 /* End PBXBuildFile section */
 
@@ -65,8 +64,6 @@
 		67F123BD1844ECF6008F01BD /* NSData+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+LBcategory.m"; sourceTree = "<group>"; };
 		67F123BE1844ECF6008F01BD /* NSString+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LBcategory.h"; sourceTree = "<group>"; };
 		67F123BF1844ECF6008F01BD /* NSString+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBcategory.m"; sourceTree = "<group>"; };
-		67F123C01844ECF6008F01BD /* NSURLSession+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+LBcategory.h"; sourceTree = "<group>"; };
-		67F123C11844ECF6008F01BD /* NSURLSession+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+LBcategory.m"; sourceTree = "<group>"; };
 		67F123C21844ECF6008F01BD /* UIImageView+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBcategory.h"; sourceTree = "<group>"; };
 		67F123C31844ECF6008F01BD /* UIImageView+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBcategory.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,8 +160,6 @@
 				67F123BD1844ECF6008F01BD /* NSData+LBcategory.m */,
 				67F123BE1844ECF6008F01BD /* NSString+LBcategory.h */,
 				67F123BF1844ECF6008F01BD /* NSString+LBcategory.m */,
-				67F123C01844ECF6008F01BD /* NSURLSession+LBcategory.h */,
-				67F123C11844ECF6008F01BD /* NSURLSession+LBcategory.m */,
 				67F123C21844ECF6008F01BD /* UIImageView+LBcategory.h */,
 				67F123C31844ECF6008F01BD /* UIImageView+LBcategory.m */,
 			);
@@ -244,7 +239,6 @@
 				25C65F46175D39F100AE8FFC /* AppDelegate.m in Sources */,
 				25C65F52175D39F100AE8FFC /* ViewController.m in Sources */,
 				67F123C91844ECF6008F01BD /* UIImageView+LBcategory.m in Sources */,
-				67F123C81844ECF6008F01BD /* NSURLSession+LBcategory.m in Sources */,
 				25C65F6A175D3A2400AE8FFC /* MyCell.m in Sources */,
 				67F123C51844ECF6008F01BD /* LBCache.m in Sources */,
 				67F123C41844ECF6008F01BD /* ImageOperation.m in Sources */,

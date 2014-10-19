@@ -184,13 +184,13 @@
     
     switch (hashType) {
         case DataHashTypeMD5:
-            CC_MD5(str, strlen(str), buffer);
+            CC_MD5(str, (CC_LONG)strlen(str), buffer);
             break;
         case DataHashTypeSHA1:
-            CC_SHA1(str, strlen(str), buffer);
+            CC_SHA1(str, (CC_LONG)strlen(str), buffer);
             break;
         case DataHashTypeSHA256:
-            CC_SHA256(str, strlen(str), buffer);
+            CC_SHA256(str, (CC_LONG)strlen(str), buffer);
             break;
         default:
             return nil;

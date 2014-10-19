@@ -10,6 +10,8 @@
 #import "NSString+LBcategory.h"
 
 #define kDefaultHashType HashTypeSHA1
+#define kTimeoutInteral 30
+#define kMaxConcurrentOperations 2
 
 typedef void(^LBCacheOperationBlock)(UIImage *image, NSError *error);
 // the ProgressBlock parameter is the percent

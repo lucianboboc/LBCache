@@ -60,18 +60,7 @@ Methods to use:
 - <code>imageForURLString:</code> - same as UIImageView+LBcategory, search the UIImage directly in cache (memory or disk), nil is returned if not found
 
  
-III. NSURLSession+LBcategory:
--------
-- this class is used by the LBCache to download and cache the UIImage from a URL but it can also be used to work with a web API.
-- an error domain was created for this class category, check NSURLSession+LBcategory.h for more details.
- 
-Methods to use:
-- <code>dataTaskWithImageURLString:completionBlock:</code> - async download an image from the web.
-- <code>dataTaskWithURLString:stringHTTPBody:method:completionBlock:</code> - this method can be used for GET requests (pass nil for stringHTTPBody parameter) or POST requests (pass the stringHTTPBody string to be set as HTTPBody (<code> Content-Type -> application/x-www-form-urlencoded </code>).
-<code>dataTaskWithURLString:objectHTTPBody:method:completionBlock:</code> - this method can be used for GET requests (pass nil for objectHTTPBody parameter) or POST requests (pass the objectHTTPBody object (<code>NSArray</code> or <code>NSDictionary</code> which is serialized into a <code>JSON</code> and set as HTTPBody).
-
- 
-IV. NSString+LBcategory:
+III. NSString+LBcategory:
 -------
 - use this class category to get hash value from a string or to encrypt/decrypt data.
 - there are 3 options available, <code>MD5, SHA1 and SHA256</code>
@@ -86,7 +75,7 @@ Methods to use:
 - <code>decryptedWithAESUsingKey:andIV:</code> - decrypt data using a Key and IV
 
  
-V. NSData+LBcategory:
+IV. NSData+LBcategory:
 -------
 - use this category to encrypt/decrypt data, create initialization vector for ecryption and encode in base64
 

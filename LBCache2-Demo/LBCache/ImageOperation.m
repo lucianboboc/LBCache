@@ -38,9 +38,9 @@
         _executing = NO;
         _finished = NO;
         _sesstion = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration ephemeralSessionConfiguration] delegate: self delegateQueue: nil];
-        self.urlString = urlString;
-        self.progressBlock = progressBlock;
-        self.imageBlock = completionBlock;
+        _urlString = urlString;
+        _progressBlock = [progressBlock copy];
+        _imageBlock = [completionBlock copy];
     }
     return self;
 }

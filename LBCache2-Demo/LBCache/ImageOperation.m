@@ -23,6 +23,8 @@
 @end
 
 @implementation ImageOperation
+@synthesize executing = _executing;
+@synthesize finished = _finished;
 
 - (void) dealloc{
     [_sesstion invalidateAndCancel];
@@ -127,7 +129,33 @@
 
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
-    self.location = location;
+    NSString *str = downloadTask.response.URL.absoluteString;
+    if(str) {
+        NSString *hash = [str lbHashWithType: kDefaultHashType];
+        if(hash) {
+            NSURL *tempURL = [NSURL fileURLWithPath:NSTemporaryDirectory()];
+            if(tempURL) {
+                NSURL *imageURL = [tempURL URLByAppendingPathComponent: hash];
+                
+                NSError *error = nil;
+                NSFileManager *fileManager = [[NSFileManager alloc] init];
+                if([fileManager fileExistsAtPath: [imageURL path]])
+                {
+                    BOOL success = [fileManager replaceItemAtURL: imageURL withItemAtURL: location backupItemName:nil options:0 resultingItemURL: &imageURL error: &error];
+                    if(success) {
+                        self.location = imageURL;
+                    }
+                }
+                else
+                {
+                    BOOL success = [fileManager copyItemAtURL: location toURL: imageURL error: &error];
+                    if(success) {
+                        self.location = imageURL;
+                    }
+                }
+            }
+        }
+    }
 }
 
 

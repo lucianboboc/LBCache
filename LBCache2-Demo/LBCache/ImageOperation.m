@@ -210,6 +210,16 @@
     if(!imageSource)
         return nil;
     
+    NSInteger orientationValue = UIImageOrientationUp;    
+    CFDictionaryRef properties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, NULL);
+    if(properties) {
+        CFTypeRef val = CFDictionaryGetValue(properties, kCGImagePropertyOrientation);
+        if (val) {
+            CFNumberGetValue(val, kCFNumberNSIntegerType, &orientationValue);
+        }
+        CFRelease(properties);
+    }
+    
     CGImageRef imageRef = CGImageSourceCreateImageAtIndex(imageSource, 0, NULL);
     if(!imageRef)
     {
@@ -219,7 +229,7 @@
     }
     else
     {
-        UIImage *img = [[UIImage alloc] initWithCGImage: imageRef];
+        UIImage *img = [[UIImage alloc] initWithCGImage: imageRef scale:[UIScreen mainScreen].scale orientation:orientationValue];
 
         CFRelease(imageRef);
         if(imageSource)

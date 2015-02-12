@@ -17,7 +17,6 @@ This library offer:
 - asynchronous image download;
 - cache support (memory and disk) with the option to set the days to keep the cache on disk;
 - option to get the local path to an image.
-- send asynchronous data task requests using application/json and application/x-www-form-urlencoded ContentType and receive JSON response.
 - create MD5,SHA1,SHA256 hash and hmac.
 - encrypt/decrypt nstring/data.
 - create an initialization vector.

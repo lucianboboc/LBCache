@@ -30,8 +30,6 @@
 		670199B31AE7C7C1003F81A8 /* NSString+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 670199AB1AE7C7C1003F81A8 /* NSString+LBcategory.m */; };
 		670199B41AE7C7C1003F81A8 /* UIImageView+LBcategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 670199AC1AE7C7C1003F81A8 /* UIImageView+LBcategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		670199B51AE7C7C1003F81A8 /* UIImageView+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 670199AD1AE7C7C1003F81A8 /* UIImageView+LBcategory.m */; };
-		6751326A17D4860D00290D2D /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 6751326817D4860D00290D2D /* LICENSE.md */; };
-		6751326B17D4860D00290D2D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6751326917D4860D00290D2D /* README.md */; };
 		67B30CEF1AE7C13D003AD8F5 /* LBCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 67B30CEE1AE7C13D003AD8F5 /* LBCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67B30CF51AE7C13D003AD8F5 /* LBCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B30CEA1AE7C13D003AD8F5 /* LBCache.framework */; };
 		67B30CFE1AE7C13D003AD8F5 /* LBCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B30CFD1AE7C13D003AD8F5 /* LBCacheTests.m */; };
@@ -106,8 +104,6 @@
 		670199AC1AE7C7C1003F81A8 /* UIImageView+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBcategory.h"; sourceTree = "<group>"; };
 		670199AD1AE7C7C1003F81A8 /* UIImageView+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBcategory.m"; sourceTree = "<group>"; };
 		671EC89D178577AA002886A9 /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
-		6751326817D4860D00290D2D /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = SOURCE_ROOT; };
-		6751326917D4860D00290D2D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		67A4DF401843AAAF00008A74 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		67B30CEA1AE7C13D003AD8F5 /* LBCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LBCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67B30CED1AE7C13D003AD8F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -195,8 +191,6 @@
 				25C65F51175D39F100AE8FFC /* ViewController.m */,
 				25C65F68175D3A2400AE8FFC /* MyCell.h */,
 				25C65F69175D3A2400AE8FFC /* MyCell.m */,
-				6751326817D4860D00290D2D /* LICENSE.md */,
-				6751326917D4860D00290D2D /* README.md */,
 				25C65F3C175D39F100AE8FFC /* Supporting Files */,
 			);
 			name = "LBCache-Demo";
@@ -385,9 +379,7 @@
 				25C65F40175D39F100AE8FFC /* InfoPlist.strings in Resources */,
 				25C65F48175D39F100AE8FFC /* Default.png in Resources */,
 				25C65F4A175D39F100AE8FFC /* Default@2x.png in Resources */,
-				6751326B17D4860D00290D2D /* README.md in Resources */,
 				25C65F4C175D39F100AE8FFC /* Default-568h@2x.png in Resources */,
-				6751326A17D4860D00290D2D /* LICENSE.md in Resources */,
 				25C65F4F175D39F100AE8FFC /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

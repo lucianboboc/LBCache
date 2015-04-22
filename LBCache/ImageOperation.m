@@ -111,7 +111,7 @@
     if(imagePath)
     {
         // if image exists at local path, create and return it
-        UIImage *image = [UIImage imageWithContentsOfFile: imagePath];
+        image = [UIImage imageWithContentsOfFile: imagePath];
         if(image) {
             if(self.imageBlock)
             {

@@ -13,9 +13,6 @@
 @property (strong, nonatomic) NSCache *memoryCache;
 @property (strong, nonatomic) NSOperationQueue *imagesQueue;
 
-- (ImageOperation *) downloadImageFromURLStringOnly:(NSString *)urlString progressBlock: (ProgressBlock) progressBlock completionBlock:(LBCacheImageBlock)completionBlock;
-- (ImageOperation *) loadImageFromDiskOrFromWebURLString:(NSString *)urlString progressBlock: (ProgressBlock) progressBlock completionBlock:(LBCacheImageBlock)completionBlock;
-- (void) loadImageFromDiskURLString:(NSString *)urlString completionBlock:(LBCacheImageBlock)completionBlock;
 - (void) removeCachedImages;
 
 @end

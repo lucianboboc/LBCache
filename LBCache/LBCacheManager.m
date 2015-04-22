@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Lucian Boboc. All rights reserved.
 //
 
-#import "LBCache.h"
+#import "LBCacheManager.h"
 #import "ImageOperation.h"
 
-@interface LBCache ()
+@interface LBCacheManager ()
 @property (strong, nonatomic) NSCache *memoryCache;
 @property (strong, nonatomic) NSOperationQueue *imagesQueue;
 
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation LBCache
+@implementation LBCacheManager
 @synthesize memoryCache = _memoryCache;
 @synthesize imagesQueue = _imagesQueue;
 
@@ -55,9 +55,9 @@
     return _imagesQueue;
 }
 
-+ (LBCache *) sharedInstance
++ (LBCacheManager *) sharedInstance
 {
-    static LBCache *lbInstance = nil;
+    static LBCacheManager *lbInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         lbInstance = [[super allocWithZone: nil] init];
@@ -211,13 +211,13 @@
 
 - (ImageOperation *) downloadImageFromURLStringOnly:(NSString *)urlString progressBlock: (ProgressBlock) progressBlock completionBlock:(LBCacheImageBlock)completionBlock
 {
-    __weak LBCache *weakSelf = self;
+    __weak LBCacheManager *weakSelf = self;
     ImageOperation *operation = [[ImageOperation alloc] initWithURLString: urlString progressBlock:^(NSUInteger percent){
         if(progressBlock)
             progressBlock(percent);
     } completionBlock:^(UIImage *image, NSError *error) {
 
-        LBCache *strongSelf = weakSelf;
+        LBCacheManager *strongSelf = weakSelf;
         if(error)
         {
             if(completionBlock)
@@ -247,13 +247,13 @@
 
 - (ImageOperation *) downloadImageFromURLStringOrLoadFromLocalCache:(NSString *)urlString progressBlock: (ProgressBlock) progressBlock completionBlock:(LBCacheImageBlock)completionBlock
 {
-    __weak LBCache *weakSelf = self;
+    __weak LBCacheManager *weakSelf = self;
     ImageOperation *operation = [[ImageOperation alloc] initWithURLString: urlString progressBlock:^(NSUInteger percent) {
         if(progressBlock)
             progressBlock(percent);
     } completionBlock:^(UIImage *image, NSError *error) {
         
-        LBCache *strongSelf = weakSelf;
+        LBCacheManager *strongSelf = weakSelf;
         if(error)
         {
             // load from local cache or cancel

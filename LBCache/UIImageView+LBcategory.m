@@ -7,7 +7,7 @@
 //
 
 #import "UIImageView+LBcategory.h"
-#import "LBCache.h"
+#import "LBCacheManager.h"
 #import <objc/runtime.h>
 
 static char operationKey;
@@ -41,7 +41,7 @@ static char operationKey;
     [self cancelDownload];
     
     __weak UIImageView *weakSelf = self;
-    ImageOperation *imageOperation = [[LBCache sharedInstance] downloadImageFromURLString:urlString options: option progressBlock:^(NSUInteger percent){
+    ImageOperation *imageOperation = [[LBCacheManager sharedInstance] downloadImageFromURLString:urlString options: option progressBlock:^(NSUInteger percent){
         if(progressBlock)
             progressBlock(percent);
     } completionBlock:^(UIImage *image ,NSError *error) {
@@ -69,7 +69,7 @@ static char operationKey;
 
 - (UIImage *) imageForURLString: (NSString *) urlString
 {
-    return [[LBCache sharedInstance] imageForURLString: urlString];
+    return [[LBCacheManager sharedInstance] imageForURLString: urlString];
 }
 
 

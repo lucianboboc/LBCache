@@ -21,14 +21,4 @@ typedef NS_ENUM(NSUInteger, HashType){
 - (NSString*) lbHashSHA256;
 - (NSString*) lbHashWithType: (HashType) hashType;
 
-
-// key length recommented to be 32 bytes
-- (NSString*) lbHashMacWithKey: (NSString *) key;
-
-
-
-- (NSString*) encryptedWithAESUsingKey: (NSString*)key andIV:(NSData*)iv;
-- (NSString*) decryptedWithAESUsingKey: (NSString*)key andIV:(NSData*)iv;
-
-
 @end

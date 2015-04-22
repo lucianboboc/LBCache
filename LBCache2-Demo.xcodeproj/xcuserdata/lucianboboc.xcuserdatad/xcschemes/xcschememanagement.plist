@@ -9,10 +9,25 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>LBCache.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>25C65F31175D39F100AE8FFC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>67B30CE91AE7C13D003AD8F5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>67B30CF31AE7C13D003AD8F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

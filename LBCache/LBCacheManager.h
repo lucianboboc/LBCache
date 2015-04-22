@@ -41,9 +41,9 @@ typedef NS_ENUM(NSUInteger, LBCacheError){
     LBCacheErrorNilCacheDirectory,
 };
 
-@interface LBCache : NSObject
+@interface LBCacheManager : NSObject
 
-+ (LBCache *) sharedInstance;
++ (LBCacheManager *) sharedInstance;
 
 - (ImageOperation *) downloadImageFromURLString: (NSString *) urlString options: (LBCacheImageOptions) options progressBlock: (ProgressBlock) progressBlock completionBlock: (LBCacheImageBlock) completionBlock;
 

@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "LBCache.h"
 #import "MyCell.h"
+//#import <LBCache/LBCache.h>
+@import LBCache;
 
 @interface ViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;

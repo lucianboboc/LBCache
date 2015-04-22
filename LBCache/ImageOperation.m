@@ -7,7 +7,7 @@
 //
 
 #import "ImageOperation.h"
-#import "LBCache.h"
+#import "LBCacheManager.h"
 #import <ImageIO/ImageIO.h>
 
 @interface ImageOperation () <NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
@@ -174,8 +174,9 @@
             if(imageURL)
             {
                 UIImage *image = [self createImageWithContentsOfURL: imageURL];
-                if(image)
+                if(image) {
                     self.imageBlock(image, nil);
+                }
                 else
                 {
                     NSError *error = [NSError errorWithDomain: kLBCacheErrorDomain code: LBCacheErrorCantCreateImage userInfo: @{NSLocalizedDescriptionKey: kCantCreateImageDescription}];
@@ -253,7 +254,7 @@
 
 - (NSURL *) saveImageAndReturnURLLocationWithTempLocation: (NSURL *) tempLocation forURLString: (NSString *) urlString error: (NSError * __autoreleasing*) error
 {
-    NSURL *imagesURLDirectory = [[LBCache sharedInstance] getLBCacheDirectory];
+    NSURL *imagesURLDirectory = [[LBCacheManager sharedInstance] getLBCacheDirectory];
     
     if(imagesURLDirectory)
     {

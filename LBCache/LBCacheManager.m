@@ -104,8 +104,6 @@
 
 - (ImageOperation *) downloadImageFromURLString: (NSString *) urlString options: (LBCacheImageOptions) options progressBlock:(ProgressBlock)progressBlock completionBlock: (LBCacheImageBlock) completionBlock
 {
-    ImageOperation *imageOperation = nil;
-    
     if(options == LBCacheImageOptionsDefault)
     {
         UIImage *image = [self.memoryCache objectForKey: urlString];
@@ -115,28 +113,12 @@
             if(completionBlock)
             {
                 completionBlock(image,nil);  // LOADED FROM MEMORY CACHE
+                return nil;
             }
         }
-        else
-            imageOperation = [self loadImageFromDiskOrFromWebURLString: urlString progressBlock: progressBlock completionBlock: completionBlock];
     }
-    else if(options == LBCacheImageOptionsLoadOnlyFromCache)
-    {
-        UIImage *image = [self.memoryCache objectForKey: urlString];
-        if(image)
-        {
-            // if image is found in cache, return it
-            if(completionBlock)
-            {
-                completionBlock(image,nil);  // LOADED FROM MEMORY CACHE
-            }
-        }
-        else
-            [self loadImageFromDiskURLString: urlString completionBlock:completionBlock];
-    }
-    else    //  LBCacheImageOptionsReloadFromWebOrCache
-        imageOperation = [self downloadImageFromURLStringOrLoadFromLocalCache: urlString progressBlock:progressBlock completionBlock: completionBlock];
 
+    ImageOperation *imageOperation = [self startOperationWithURLString:urlString options:options progressBlock:progressBlock completionBlock: completionBlock];
     return imageOperation;
 }
 
@@ -144,111 +126,10 @@
 
 
 
-- (void) loadImageFromDiskURLString:(NSString *)urlString completionBlock:(LBCacheImageBlock)completionBlock
-{
-    NSString *imagePath = [self imagePathLocationForURLString: urlString];
-    if(imagePath)
-    {
-        // if image exists at local path, create and return it
-        UIImage *image = [UIImage imageWithContentsOfFile: imagePath];
-        if(image)
-        {
-            [self.memoryCache setObject: image forKey: urlString];
-            
-            if(completionBlock)
-            {
-                completionBlock(image,nil);   // LOADED FROM DISK
-            }
-        }
-        else
-        {
-            // CAN'T CREATE IMAGE
-            if(completionBlock)
-            {
-                NSError *error = [NSError errorWithDomain: kLBCacheErrorDomain code: LBCacheErrorCantCreateImage userInfo: @{NSLocalizedDescriptionKey: kCantCreateImageDescription}];
-                completionBlock(nil,error);
-            }            
-        }
-    }
-    else
-    {   // file doesn't exists at local path
-        if(completionBlock)
-        {
-            NSError *error = [NSError errorWithDomain: kLBCacheErrorDomain code: LBCacheErrorImageNotFound userInfo: @{NSLocalizedDescriptionKey: kImageNotFoundDescription}];
-            completionBlock(nil,error);
-        }
-    }
-}
-
-
-- (ImageOperation *) loadImageFromDiskOrFromWebURLString:(NSString *)urlString progressBlock: (ProgressBlock) progressBlock completionBlock:(LBCacheImageBlock)completionBlock
-{
-    ImageOperation *imageOperation = nil;
-    
-    NSString *imagePath = [self imagePathLocationForURLString: urlString];
-    if(imagePath)
-    {
-        // if image exists at local path, create and return it
-        UIImage *image = [UIImage imageWithContentsOfFile: imagePath];
-        if(image)
-        {
-            [self.memoryCache setObject: image forKey: urlString];
-            if(completionBlock)
-            {
-                completionBlock(image,nil);  // LOADED FROM DISK
-            }
-        }
-        else
-           imageOperation = [self downloadImageFromURLStringOnly:urlString progressBlock: progressBlock completionBlock:completionBlock];
-    }
-    else
-        imageOperation = [self downloadImageFromURLStringOnly:urlString progressBlock: progressBlock completionBlock:completionBlock];
-
-    return imageOperation;
-}
-
-
-
-- (ImageOperation *) downloadImageFromURLStringOnly:(NSString *)urlString progressBlock: (ProgressBlock) progressBlock completionBlock:(LBCacheImageBlock)completionBlock
+- (ImageOperation *) startOperationWithURLString:(NSString *)urlString options:(LBCacheImageOptions)options progressBlock:(ProgressBlock)progressBlock completionBlock:(LBCacheImageBlock)completionBlock
 {
     __weak LBCacheManager *weakSelf = self;
-    ImageOperation *operation = [[ImageOperation alloc] initWithURLString: urlString progressBlock:^(NSUInteger percent){
-        if(progressBlock)
-            progressBlock(percent);
-    } completionBlock:^(UIImage *image, NSError *error) {
-
-        LBCacheManager *strongSelf = weakSelf;
-        if(error)
-        {
-            if(completionBlock)
-                completionBlock(nil,error);  // ERROR
-        }
-        else
-        {
-            // save UIImage to memoryCache
-            [strongSelf.memoryCache setObject: image forKey: urlString];
-            
-            if(completionBlock)
-            {
-                completionBlock(image,nil);   // LOADED FROM THE WEB
-            }
-        }
-    }];
-    
-    [self.imagesQueue addOperation: operation];
-    return operation;
-}
-
-
-
-
-
-
-
-- (ImageOperation *) downloadImageFromURLStringOrLoadFromLocalCache:(NSString *)urlString progressBlock: (ProgressBlock) progressBlock completionBlock:(LBCacheImageBlock)completionBlock
-{
-    __weak LBCacheManager *weakSelf = self;
-    ImageOperation *operation = [[ImageOperation alloc] initWithURLString: urlString progressBlock:^(NSUInteger percent) {
+    ImageOperation *operation = [[ImageOperation alloc] initWithURLString:urlString options:options progressBlock:^(NSUInteger percent) {
         if(progressBlock)
             progressBlock(percent);
     } completionBlock:^(UIImage *image, NSError *error) {
@@ -256,20 +137,9 @@
         LBCacheManager *strongSelf = weakSelf;
         if(error)
         {
-            // load from local cache or cancel
-            UIImage *image = [self.memoryCache objectForKey: urlString];
-            if(image)
+            if(completionBlock)
             {
-                // if image is found in cache, return it
-                if(completionBlock)
-                {
-                    completionBlock(image,nil);  // LOADED FROM MEMORY CACHE
-                }
-            }
-            else
-            {
-                if(completionBlock)
-                    [self loadImageFromDiskURLString: urlString completionBlock:completionBlock];
+                completionBlock(nil,error);
             }
         }
         else

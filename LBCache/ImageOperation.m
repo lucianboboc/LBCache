@@ -16,6 +16,7 @@
 @property (copy, nonatomic) LBCacheOperationBlock imageBlock;
 @property (copy, nonatomic) ProgressBlock progressBlock;
 @property (strong, nonatomic) NSURL *location;
+@property (nonatomic) LBCacheImageOptions options;
 
 @property (assign, nonatomic, getter = isExecuting) BOOL executing;
 @property (assign, nonatomic, getter = isFinished) BOOL finished;
@@ -29,13 +30,14 @@
     [_sesstion invalidateAndCancel];
 }
 
-- (id) initWithURLString: (NSString *) urlString progressBlock:(ProgressBlock)progressBlock completionBlock: (LBCacheOperationBlock) completionBlock
+- (id) initWithURLString:(NSString *)urlString options:(LBCacheImageOptions)options progressBlock:(ProgressBlock)progressBlock completionBlock:(LBCacheOperationBlock)completionBlock
 {
     self = [super init];
     if(self)
     {
         _executing = NO;
         _finished = NO;
+        _options = options;
         _sesstion = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration ephemeralSessionConfiguration] delegate: self delegateQueue: nil];
         _urlString = urlString;
         _progressBlock = [progressBlock copy];
@@ -73,7 +75,7 @@
         [self done];
         return;
     }
-
+    
     if(!self.urlString)
     {
         NSError *error = [NSError errorWithDomain: @"LBErrorDomain" code: 1 userInfo: @{NSLocalizedDescriptionKey: @"Invalid URL."}];
@@ -82,8 +84,51 @@
         [self done];
         return;
     }
-    
+
     self.executing = YES;
+
+    if(self.options == LBCacheImageOptionsDefault)
+    {
+        [self getImageFromCacheOrServer];
+    }
+    else if(self.options == LBCacheImageOptionsReloadFromWeb)
+    {
+        [self getImageFromTheServer];
+    }
+    else
+    {
+        [self loadOnlyFromCache];
+    }
+    
+}
+
+- (void) getImageFromCacheOrServer
+{
+    LBCacheManager *cacheManager = [LBCacheManager sharedInstance];
+    NSString *imagePath = [cacheManager imagePathLocationForURLString: self.urlString];
+    UIImage *image = nil;
+    
+    if(imagePath)
+    {
+        // if image exists at local path, create and return it
+        UIImage *image = [UIImage imageWithContentsOfFile: imagePath];
+        if(image) {
+            if(self.imageBlock)
+            {
+                self.imageBlock(image,nil);   // LOADED FROM DISK
+            }
+            [self done];
+        }
+    }
+    
+    if (!image)
+    {
+        [self getImageFromTheServer];
+    }
+}
+
+
+-(void) getImageFromTheServer {
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: self.urlString] cachePolicy: NSURLRequestReloadIgnoringLocalCacheData timeoutInterval: kTimeoutInteral];
     [request setAllHTTPHeaderFields: @{@"Accept":@"image/*"}];
@@ -95,7 +140,43 @@
     
     NSURLSessionDownloadTask *task = [self.sesstion downloadTaskWithRequest: request];
     [task resume];
+}
 
+-(void) loadOnlyFromCache
+{
+    LBCacheManager *cacheManager = [LBCacheManager sharedInstance];
+    NSString *imagePath = [cacheManager imagePathLocationForURLString: self.urlString];
+    if(imagePath)
+    {
+        // if image exists at local path, create and return it
+        UIImage *image = [UIImage imageWithContentsOfFile: imagePath];
+        if(image)
+        {
+            if(self.imageBlock)
+            {
+                self.imageBlock(image,nil);   // LOADED FROM DISK
+            }
+        }
+        else
+        {
+            // CAN'T CREATE IMAGE
+            if(self.imageBlock)
+            {
+                NSError *error = [NSError errorWithDomain: kLBCacheErrorDomain code: LBCacheErrorCantCreateImage userInfo: @{NSLocalizedDescriptionKey: kCantCreateImageDescription}];
+                self.imageBlock(nil,error);
+            }
+        }
+    }
+    else
+    {   // file doesn't exists at local path
+        if(self.imageBlock)
+        {
+            NSError *error = [NSError errorWithDomain: kLBCacheErrorDomain code: LBCacheErrorImageNotFound userInfo: @{NSLocalizedDescriptionKey: kImageNotFoundDescription}];
+            self.imageBlock(nil,error);
+        }
+    }
+
+    [self done];
 }
 
 

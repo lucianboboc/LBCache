@@ -45,20 +45,20 @@ static char operationKey;
         if(progressBlock)
             progressBlock(percent);
     } completionBlock:^(UIImage *image ,NSError *error) {
-    
-        if(error)
-            NSLog(@"Error: %@", error.localizedDescription);
-        if(image)
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(error)
+                NSLog(@"Error: %@", error.localizedDescription);
+            if(image)
+            {
                 __strong UIImageView *strongSelf = weakSelf;
                 strongSelf.image = image;
                 [strongSelf setNeedsLayout];
-            });
-        }
-        
-        if(completionBlock)
-            completionBlock(image,error);
+            }
+            
+            if(completionBlock) {
+                completionBlock(image,error);
+            }
+        });
     }];
     
     objc_setAssociatedObject(self, &operationKey, imageOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

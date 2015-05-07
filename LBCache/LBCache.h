@@ -16,4 +16,6 @@ FOUNDATION_EXPORT const unsigned char LBCacheVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <LBCache/PublicHeader.h>
 #import <LBCache/LBCacheManager.h>
-
+#import <LBCache/ImageOperation.h>
+#import <LBCache/NSString+LBCategory.h>
+#import <LBCache/UIImageView+LBCategory.h>

@@ -30,6 +30,7 @@
 		670199B31AE7C7C1003F81A8 /* NSString+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 670199AB1AE7C7C1003F81A8 /* NSString+LBcategory.m */; };
 		670199B41AE7C7C1003F81A8 /* UIImageView+LBcategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 670199AC1AE7C7C1003F81A8 /* UIImageView+LBcategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		670199B51AE7C7C1003F81A8 /* UIImageView+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 670199AD1AE7C7C1003F81A8 /* UIImageView+LBcategory.m */; };
+		674F51E91AEB9B6200C97EDD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 674F51E81AEB9B6200C97EDD /* README.md */; };
 		679024E31AE7F30200678433 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 679024E21AE7F30200678433 /* LICENSE.md */; };
 		67B30CEF1AE7C13D003AD8F5 /* LBCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 67B30CEE1AE7C13D003AD8F5 /* LBCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67B30CF51AE7C13D003AD8F5 /* LBCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B30CEA1AE7C13D003AD8F5 /* LBCache.framework */; };
@@ -105,6 +106,7 @@
 		670199AC1AE7C7C1003F81A8 /* UIImageView+LBcategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBcategory.h"; sourceTree = "<group>"; };
 		670199AD1AE7C7C1003F81A8 /* UIImageView+LBcategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBcategory.m"; sourceTree = "<group>"; };
 		671EC89D178577AA002886A9 /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
+		674F51E81AEB9B6200C97EDD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		679024E21AE7F30200678433 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = SOURCE_ROOT; };
 		67A4DF401843AAAF00008A74 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		67B30CEA1AE7C13D003AD8F5 /* LBCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LBCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +197,7 @@
 				25C65F69175D3A2400AE8FFC /* MyCell.m */,
 				25C65F3C175D39F100AE8FFC /* Supporting Files */,
 				679024E21AE7F30200678433 /* LICENSE.md */,
+				674F51E81AEB9B6200C97EDD /* README.md */,
 			);
 			name = "LBCache-Demo";
 			path = "LBCache2-Demo";
@@ -408,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				674F51E91AEB9B6200C97EDD /* README.md in Sources */,
 				679024E31AE7F30200678433 /* LICENSE.md in Sources */,
 				25C65F42175D39F100AE8FFC /* main.m in Sources */,
 				25C65F46175D39F100AE8FFC /* AppDelegate.m in Sources */,
@@ -540,6 +544,7 @@
 				INFOPLIST_FILE = "LBCache2-Demo/LBCache-Demo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "LBCache2-Demo";
 				WRAPPER_EXTENSION = app;
 			};
@@ -554,6 +559,7 @@
 				INFOPLIST_FILE = "LBCache2-Demo/LBCache-Demo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "LBCache2-Demo";
 				WRAPPER_EXTENSION = app;
 			};

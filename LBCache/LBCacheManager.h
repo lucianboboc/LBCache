@@ -45,11 +45,11 @@ typedef NS_ENUM(NSUInteger, LBCacheError){
 
 + (LBCacheManager * __nonnull) sharedInstance;
 
-- (ImageOperation * __nullable) downloadImageFromURLString: (NSString * __nonnull) urlString options: (LBCacheImageOptions) options progressBlock: (ProgressBlock __nullable) progressBlock completionBlock: (LBCacheImageBlock __nonnull) completionBlock;
+- (ImageOperation * __nullable) downloadImageFromURLString: (NSString * __nullable) urlString options: (LBCacheImageOptions) options progressBlock: (ProgressBlock __nullable) progressBlock completionBlock: (LBCacheImageBlock __nonnull) completionBlock;
 
-- (NSString * __nullable) imagePathLocationForURLString: (NSString * __nonnull) key;
+- (NSString * __nullable) imagePathLocationForURLString: (NSString * __nullable) key;
 
-- (UIImage * __nullable) imageForURLString: (NSString * __nonnull) urlString;
+- (UIImage * __nullable) imageForURLString: (NSString * __nullable) urlString;
 
 - (NSURL * __nonnull)applicationCachesDirectory;
 - (NSURL * __nonnull) getLBCacheDirectory;

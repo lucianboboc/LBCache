@@ -11,15 +11,15 @@
 
 @interface UIImageView (LBcategory)
 
-- (void) setImageWithURLString: (NSString * __nonnull) urlString placeholderImage: (UIImage * __nullable) placeholderImage;
+- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage;
 
-- (void) setImageWithURLString: (NSString * __nonnull) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option;
+- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option;
 
-- (void) setImageWithURLString: (NSString * __nonnull) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option completionBlock: (LBCacheImageBlock __nullable) completionBlock;
+- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option completionBlock: (LBCacheImageBlock __nullable) completionBlock;
 
-- (void) setImageWithURLString: (NSString * __nonnull) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option progressBlock: (ProgressBlock __nullable) progressBlock completionBlock: (LBCacheImageBlock __nullable) completionBlock;
+- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option progressBlock: (ProgressBlock __nullable) progressBlock completionBlock: (LBCacheImageBlock __nullable) completionBlock;
 
-- (UIImage * __nullable) imageForURLString: (NSString * __nonnull) urlString;
+- (UIImage * __nullable) imageForURLString: (NSString * __nullable) urlString;
 
 - (void) cancelDownload;
 

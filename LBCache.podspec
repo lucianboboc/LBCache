@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LBCache"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "LBCache image cache framework"
   s.description  = <<-DESC
                    LBCache is an asynchronous image cache framework for iOS.

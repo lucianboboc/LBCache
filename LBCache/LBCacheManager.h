@@ -11,8 +11,8 @@
 #error LBCache library is ARC only.
 #endif
 
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
-#error LBCache library needs iOS 7.0 or later.
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_8_0
+#error LBCache library needs iOS 8.0 or later.
 #endif
 
 #import <Foundation/Foundation.h>
@@ -40,6 +40,9 @@ typedef NS_ENUM(NSUInteger, LBCacheError){
     // the LBCacheDirectory is nil
     LBCacheErrorNilCacheDirectory,
 };
+
+static NSString * __nonnull LBCacheDownloadImageStartedNotification = @"LBCacheDownloadImageStartedNotification";
+static NSString * __nonnull LBCacheDownloadImageStoppedNotification = @"LBCacheDownloadImageStoppedNotification";
 
 @interface LBCacheManager : NSObject
 

@@ -30,8 +30,6 @@
 		670199B31AE7C7C1003F81A8 /* NSString+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 670199AB1AE7C7C1003F81A8 /* NSString+LBcategory.m */; };
 		670199B41AE7C7C1003F81A8 /* UIImageView+LBcategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 670199AC1AE7C7C1003F81A8 /* UIImageView+LBcategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		670199B51AE7C7C1003F81A8 /* UIImageView+LBcategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 670199AD1AE7C7C1003F81A8 /* UIImageView+LBcategory.m */; };
-		674F51E91AEB9B6200C97EDD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 674F51E81AEB9B6200C97EDD /* README.md */; };
-		679024E31AE7F30200678433 /* LICENSE.md in Sources */ = {isa = PBXBuildFile; fileRef = 679024E21AE7F30200678433 /* LICENSE.md */; };
 		67B30CEF1AE7C13D003AD8F5 /* LBCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 67B30CEE1AE7C13D003AD8F5 /* LBCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		67B30CF51AE7C13D003AD8F5 /* LBCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B30CEA1AE7C13D003AD8F5 /* LBCache.framework */; };
 		67B30CFE1AE7C13D003AD8F5 /* LBCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B30CFD1AE7C13D003AD8F5 /* LBCacheTests.m */; };
@@ -411,8 +409,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				674F51E91AEB9B6200C97EDD /* README.md in Sources */,
-				679024E31AE7F30200678433 /* LICENSE.md in Sources */,
 				25C65F42175D39F100AE8FFC /* main.m in Sources */,
 				25C65F46175D39F100AE8FFC /* AppDelegate.m in Sources */,
 				25C65F52175D39F100AE8FFC /* ViewController.m in Sources */,

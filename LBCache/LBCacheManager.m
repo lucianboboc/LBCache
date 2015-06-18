@@ -13,6 +13,9 @@
 @property (strong, nonatomic) NSCache *memoryCache;
 @property (strong, nonatomic) NSOperationQueue *imagesQueue;
 
+@property (nonatomic) NSInteger imageDownloadCount;
+@property (strong, nonatomic) dispatch_queue_t barrierQueue;
+
 - (void) removeCachedImages;
 
 @end
@@ -26,6 +29,9 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self name: UIApplicationDidReceiveMemoryWarningNotification object: [UIApplication sharedApplication]];
     [[NSNotificationCenter defaultCenter] removeObserver: self name: UIApplicationWillTerminateNotification object: [UIApplication sharedApplication]];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver: self name: LBCacheDownloadImageStartedNotification object: nil];
+    [[NSNotificationCenter defaultCenter] removeObserver: self name: LBCacheDownloadImageStoppedNotification object: nil];
 }
 
 
@@ -47,7 +53,7 @@
     if(!_imagesQueue)
     {
         _imagesQueue = [[NSOperationQueue alloc] init];
-        _imagesQueue.maxConcurrentOperationCount = 1;
+        _imagesQueue.maxConcurrentOperationCount = 2;
     }
     return _imagesQueue;
 }
@@ -61,6 +67,11 @@
         
         [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(memoryWarningAction:) name: UIApplicationDidReceiveMemoryWarningNotification object: [UIApplication sharedApplication]];
         [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(memoryWarningAction:) name: UIApplicationWillTerminateNotification object: [UIApplication sharedApplication]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(increaseDownloadImageCount:) name: LBCacheDownloadImageStartedNotification object: self];
+        [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(decreaseDownloadImageCount:) name: LBCacheDownloadImageStoppedNotification object: self];
+        
+        lbInstance.barrierQueue = dispatch_queue_create("com.lucianboboc.LBCache.BarrierQueue", DISPATCH_QUEUE_CONCURRENT);
         
         [lbInstance removeCachedImages];
     });
@@ -90,6 +101,34 @@
 
 
 
+#pragma mark - increase / decrease download image count
+
+- (void) increaseDownloadImageCount:(NSNotification *) notification
+{
+    dispatch_sync(self.barrierQueue, ^{
+        if (self.imageDownloadCount == 0)
+        {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+            }];
+        }
+        
+        self.imageDownloadCount++;
+    });
+}
+
+- (void) decreaseDownloadImageCount:(NSNotification *) notification
+{
+    dispatch_sync(self.barrierQueue, ^{
+        if (self.imageDownloadCount == 1)
+        {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            }];
+        }
+        self.imageDownloadCount--;
+    });
+}
 
 
 

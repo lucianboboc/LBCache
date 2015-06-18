@@ -134,9 +134,7 @@
     [request setAllHTTPHeaderFields: @{@"Accept":@"image/*"}];
     [request setHTTPMethod: @"GET"];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    });
+    [[NSNotificationCenter defaultCenter] postNotificationName:LBCacheDownloadImageStartedNotification object:self];
     
     NSURLSessionDownloadTask *task = [self.sesstion downloadTaskWithRequest: request];
     [task resume];
@@ -240,6 +238,9 @@
 
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LBCacheDownloadImageStoppedNotification object:self];
+    
     if(error)
     {
         if(self.imageBlock)
@@ -273,10 +274,6 @@
                 self.imageBlock(nil,error);
         }
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    });
     
     [self done];
 }

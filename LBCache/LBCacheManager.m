@@ -68,8 +68,8 @@
         [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(memoryWarningAction:) name: UIApplicationDidReceiveMemoryWarningNotification object: [UIApplication sharedApplication]];
         [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(memoryWarningAction:) name: UIApplicationWillTerminateNotification object: [UIApplication sharedApplication]];
         
-        [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(increaseDownloadImageCount:) name: LBCacheDownloadImageStartedNotification object: self];
-        [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(decreaseDownloadImageCount:) name: LBCacheDownloadImageStoppedNotification object: self];
+        [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(increaseDownloadImageCount:) name: LBCacheDownloadImageStartedNotification object: nil];
+        [[NSNotificationCenter defaultCenter] addObserver: lbInstance selector: @selector(decreaseDownloadImageCount:) name: LBCacheDownloadImageStoppedNotification object: nil];
         
         lbInstance.barrierQueue = dispatch_queue_create("com.lucianboboc.LBCache.BarrierQueue", DISPATCH_QUEUE_CONCURRENT);
         

@@ -13,11 +13,11 @@
 #define kTimeoutInteral 30
 #define kMaxConcurrentOperations 2
 
-typedef void(^LBCacheOperationBlock)(UIImage *image, NSError *error);
+typedef void(^LBCacheOperationBlock)( UIImage * __nullable image, NSError * __nullable error);
 // the ProgressBlock parameter is the percent
 typedef void(^ProgressBlock)(NSUInteger percent);
 
-typedef void(^LBCacheImageBlock)(UIImage *image, NSError *error);
+typedef void(^LBCacheImageBlock)(UIImage  * __nullable image, NSError  * __nullable error);
 
 typedef NS_ENUM(NSUInteger,LBCacheImageOptions){
     
@@ -34,6 +34,6 @@ typedef NS_ENUM(NSUInteger,LBCacheImageOptions){
 
 @interface ImageOperation : NSOperation
 
-- (id) initWithURLString:(NSString *)urlString options:(LBCacheImageOptions)options progressBlock:(ProgressBlock)progressBlock completionBlock:(LBCacheOperationBlock)completionBlock;
+- (id __nonnull) initWithURLString:(NSString * __nonnull)urlString options:(LBCacheImageOptions)options progressBlock:(ProgressBlock __nullable)progressBlock completionBlock:(LBCacheOperationBlock __nonnull)completionBlock;
 
 @end

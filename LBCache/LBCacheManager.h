@@ -43,15 +43,15 @@ typedef NS_ENUM(NSUInteger, LBCacheError){
 
 @interface LBCacheManager : NSObject
 
-+ (LBCacheManager *) sharedInstance;
++ (LBCacheManager * __nonnull) sharedInstance;
 
-- (ImageOperation *) downloadImageFromURLString: (NSString *) urlString options: (LBCacheImageOptions) options progressBlock: (ProgressBlock) progressBlock completionBlock: (LBCacheImageBlock) completionBlock;
+- (ImageOperation * __nullable) downloadImageFromURLString: (NSString * __nonnull) urlString options: (LBCacheImageOptions) options progressBlock: (ProgressBlock __nullable) progressBlock completionBlock: (LBCacheImageBlock __nonnull) completionBlock;
 
-- (NSString *) imagePathLocationForURLString: (NSString *) key;
+- (NSString * __nullable) imagePathLocationForURLString: (NSString * __nonnull) key;
 
-- (UIImage *) imageForURLString: (NSString *) urlString;
+- (UIImage * __nullable) imageForURLString: (NSString * __nonnull) urlString;
 
-- (NSURL *)applicationCachesDirectory;
-- (NSURL *) getLBCacheDirectory;
+- (NSURL * __nonnull)applicationCachesDirectory;
+- (NSURL * __nonnull) getLBCacheDirectory;
 
 @end

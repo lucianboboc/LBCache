@@ -16,9 +16,9 @@ typedef NS_ENUM(NSUInteger, HashType){
     HashTypeSHA256
 };
 
-- (NSString*) lbHashMD5;
-- (NSString*) lbHashSHA1;
-- (NSString*) lbHashSHA256;
-- (NSString*) lbHashWithType: (HashType) hashType;
+- (NSString* __nonnull) lbHashMD5;
+- (NSString* __nonnull) lbHashSHA1;
+- (NSString* __nonnull) lbHashSHA256;
+- (NSString* __nonnull) lbHashWithType: (HashType) hashType;
 
 @end

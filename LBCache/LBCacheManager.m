@@ -53,7 +53,7 @@
     if(!_imagesQueue)
     {
         _imagesQueue = [[NSOperationQueue alloc] init];
-        _imagesQueue.maxConcurrentOperationCount = 2;
+        _imagesQueue.maxConcurrentOperationCount = kMaxConcurrentOperations;
     }
     return _imagesQueue;
 }

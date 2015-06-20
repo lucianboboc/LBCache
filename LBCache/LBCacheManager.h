@@ -55,6 +55,7 @@ static NSString * __nonnull LBCacheDownloadImageStartedNotification = @"LBCacheD
 static NSString * __nonnull LBCacheDownloadImageStoppedNotification = @"LBCacheDownloadImageStoppedNotification";
 
 
+
 /// LBCacheManager class is used to download the image from the server or load it from disk. It also offers access to the path location on disk where the an image is cached, the image from memory cache, the caches directory location and the images cache directory location.
 @interface LBCacheManager : NSObject
 
@@ -73,11 +74,26 @@ static NSString * __nonnull LBCacheDownloadImageStoppedNotification = @"LBCacheD
 - (ImageOperation * __nullable) downloadImageFromURLString: (NSString * __nullable) urlString options: (LBCacheImageOptions) options progressBlock: (ProgressBlock __nullable) progressBlock completionBlock: (LBCacheImageBlock __nonnull) completionBlock;
 
 
+/// The method will return the image path location in cache (if found) for an image using its URL string.
+///
+/// @param key is an NSString with the url string where the image is located.
+/// @returns The path location string where the image is located if it's found cacheed on disk.
 - (NSString * __nullable) imagePathLocationForURLString: (NSString * __nullable) key;
 
+/// The method will return the image object from the cache, memory or from the disk.
+///
+/// @param urlString is an NSString with the url string where the image is located.
+/// @returns The UIImage object if it's found in memory or on the disk.
 - (UIImage * __nullable) imageForURLString: (NSString * __nullable) urlString;
 
-- (NSURL * __nonnull)applicationCachesDirectory;
-- (NSURL * __nonnull) getLBCacheDirectory;
+/// The method will return  the caches directory path location.
+///
+/// @returns The NSURL object with the directory location or nil.
+- (NSURL * __nullable)applicationCachesDirectory;
+
+/// The method will return  the images cache directory path location.
+///
+/// @returns The NSURL object with the directory location or nil.
+- (NSURL * __nullable) getLBCacheDirectory;
 
 @end

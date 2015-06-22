@@ -24,6 +24,7 @@
 /// kLBCacheErrorDomain will provide error descriptions
 #define kLBCacheErrorDomain @"LBCacheErrorDomain"
 
+
 /// kImageNotFoundDescription is the error description for the LBCacheErrorImageNotFound error type.
 #define kImageNotFoundDescription @"The image was not found at the local path in cache."
 /// kCantCreateImageDescription is the error description for the LBCacheErrorCantCreateImage error type.
@@ -34,6 +35,7 @@
 #define kNilURLStringToHash @"Can't create the hash from the image URL string."
 /// kNilLBCacheDicrectory is the error description for the LBCacheErrorNilCacheDirectory error type.
 #define kNilLBCacheDicrectory @"LBCacheDirectory is nil."
+
 
 /// LBCacheError enum is used to describe scecific errors that could happen.
 typedef NS_ENUM(NSUInteger, LBCacheError){
@@ -49,11 +51,11 @@ typedef NS_ENUM(NSUInteger, LBCacheError){
     LBCacheErrorNilCacheDirectory,
 };
 
+
 /// LBCacheDownloadImageStartedNotification is a notification sent when an image download has started.
 static NSString * __nonnull LBCacheDownloadImageStartedNotification = @"LBCacheDownloadImageStartedNotification";
 /// LBCacheDownloadImageStoppedNotification is a notification sent when an image download has finished.
 static NSString * __nonnull LBCacheDownloadImageStoppedNotification = @"LBCacheDownloadImageStoppedNotification";
-
 
 
 /// LBCacheManager class is used to download the image from the server or load it from disk. It also offers access to the path location on disk where the an image is cached, the image from memory cache, the caches directory location and the images cache directory location.
@@ -80,20 +82,24 @@ static NSString * __nonnull LBCacheDownloadImageStoppedNotification = @"LBCacheD
 /// @returns The path location string where the image is located if it's found cacheed on disk.
 - (NSString * __nullable) imagePathLocationForURLString: (NSString * __nullable) key;
 
+
 /// The method will return the image object from the cache, memory or from the disk.
 ///
 /// @param urlString is an NSString with the url string where the image is located.
 /// @returns The UIImage object if it's found in memory or on the disk.
 - (UIImage * __nullable) imageForURLString: (NSString * __nullable) urlString;
 
+
 /// The method will return  the caches directory path location.
 ///
 /// @returns The NSURL object with the directory location or nil.
 - (NSURL * __nullable)applicationCachesDirectory;
 
+
 /// The method will return  the images cache directory path location.
 ///
 /// @returns The NSURL object with the directory location or nil.
 - (NSURL * __nullable) getLBCacheDirectory;
+
 
 @end

@@ -19,10 +19,8 @@
 
 /// LBCacheOperationBlock block is used as a completion block for the ImageOperation.
 typedef void(^LBCacheOperationBlock)( UIImage * __nullable image, NSError * __nullable error);
-
 /// ProgressBlock block is used as a callback to pass the percent for the ImageOperation.
 typedef void(^ProgressBlock)(NSUInteger percent);
-
 /// LBCacheImageBlock block is used as a completion block for the UIImageView category methods.
 typedef void(^LBCacheImageBlock)(UIImage  * __nullable image, NSError  * __nullable error);
 
@@ -44,6 +42,7 @@ typedef NS_ENUM(NSUInteger,LBCacheImageOptions){
 /// ImageOperation class is used to download the image from the server or load it from disk. It is used by the LBCacheManager class.
 @interface ImageOperation : NSOperation
 
+
 /// The method will create an ImageOperation object which will be used to download the image from the server or load it from disk.
 ///
 /// @param urlString is an NSString with the url string where the image is located.
@@ -52,5 +51,6 @@ typedef NS_ENUM(NSUInteger,LBCacheImageOptions){
 /// @param completionBlock is an LBCacheOperationBlock callback which is used as a completion block for the ImageOperation.
 /// @returns The ImageOperation object.
 - (id __nonnull) initWithURLString:(NSString * __nonnull)urlString options:(LBCacheImageOptions)options progressBlock:(ProgressBlock __nullable)progressBlock completionBlock:(LBCacheOperationBlock __nonnull)completionBlock;
+
 
 @end

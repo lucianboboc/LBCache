@@ -33,32 +33,38 @@ static char operationKey;
 - (void) setImageWithURLString: (NSString *) urlString placeholderImage: (UIImage *) placeholderImage options: (LBCacheImageOptions) option progressBlock: (ProgressBlock) progressBlock completionBlock: (LBCacheImageBlock) completionBlock
 {
     if(placeholderImage)
+    {
         self.image = placeholderImage;
+    }
     
     if(!urlString)
+    {
         return;
+    }
     
     [self cancelDownload];
     
     __weak UIImageView *weakSelf = self;
     ImageOperation *imageOperation = [[LBCacheManager sharedInstance] downloadImageFromURLString:urlString options: option progressBlock:^(NSUInteger percent){
         if(progressBlock)
+        {
             progressBlock(percent);
+        }
     } completionBlock:^(UIImage *image ,NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(error)
-                NSLog(@"Error: %@", error.localizedDescription);
-            if(image)
-            {
-                __strong UIImageView *strongSelf = weakSelf;
-                strongSelf.image = image;
-                [strongSelf setNeedsLayout];
-            }
-            
-            if(completionBlock) {
-                completionBlock(image,error);
-            }
-        });
+        if(error){
+            NSLog(@"Error: %@", error.localizedDescription);
+        }
+        if(image)
+        {
+            __strong UIImageView *strongSelf = weakSelf;
+            strongSelf.image = image;
+            [strongSelf setNeedsLayout];
+        }
+        
+        if(completionBlock)
+        {
+            completionBlock(image,error);
+        }
     }];
     
     objc_setAssociatedObject(self, &operationKey, imageOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);

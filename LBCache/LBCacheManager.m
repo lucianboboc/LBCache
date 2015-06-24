@@ -167,7 +167,11 @@
     __weak LBCacheManager *weakSelf = self;
     ImageOperation *operation = [[ImageOperation alloc] initWithURLString:urlString options:options progressBlock:^(NSUInteger percent) {
         if(progressBlock)
-            progressBlock(percent);
+        {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                progressBlock(percent);
+            }];
+        }
     } completionBlock:^(UIImage *image, NSError *error) {
         
         LBCacheManager *strongSelf = weakSelf;
@@ -175,7 +179,9 @@
         {
             if(completionBlock)
             {
-                completionBlock(nil,error);
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    completionBlock(nil,error);
+                }];
             }
         }
         else
@@ -185,7 +191,9 @@
             
             if(completionBlock)
             {
-                completionBlock(image,nil);   // LOADED FROM THE WEB
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    completionBlock(image,nil);   // LOADED FROM THE WEB
+                }];
             }
         }
     }];

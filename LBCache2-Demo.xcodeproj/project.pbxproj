@@ -187,7 +187,6 @@
 			children = (
 				25C65F44175D39F100AE8FFC /* AppDelegate.h */,
 				25C65F45175D39F100AE8FFC /* AppDelegate.m */,
-				67F123B61844ECF6008F01BD /* LBCache */,
 				25C65F4D175D39F100AE8FFC /* MainStoryboard.storyboard */,
 				25C65F50175D39F100AE8FFC /* ViewController.h */,
 				25C65F51175D39F100AE8FFC /* ViewController.m */,
@@ -255,13 +254,6 @@
 				67B30CFC1AE7C13D003AD8F5 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		67F123B61844ECF6008F01BD /* LBCache */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LBCache;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

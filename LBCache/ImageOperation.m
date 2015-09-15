@@ -17,6 +17,7 @@
 @property (copy, nonatomic) ProgressBlock progressBlock;
 @property (strong, nonatomic) NSURL *location;
 @property (nonatomic) LBCacheImageOptions options;
+@property (strong, nonatomic) NSURLSessionDownloadTask *task;
 
 @property (assign, nonatomic, getter = isExecuting) BOOL executing;
 @property (assign, nonatomic, getter = isFinished) BOOL finished;
@@ -68,10 +69,22 @@
 }
 
 
+- (void) cancel {
+    [super cancel];
+    
+    [self cancelTask];
+}
+
+- (void) cancelTask {
+    [self.task cancel];
+}
+
+
 - (void) start
 {
     if(self.isCancelled)
     {
+        [self cancelTask];
         [self done];
         return;
     }
@@ -136,8 +149,8 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:LBCacheDownloadImageStartedNotification object:self];
     
-    NSURLSessionDownloadTask *task = [self.sesstion downloadTaskWithRequest: request];
-    [task resume];
+    self.task = [self.sesstion downloadTaskWithRequest: request];
+    [self.task resume];
 }
 
 -(void) loadOnlyFromCache

@@ -8,7 +8,7 @@ LBCache is an asynchronous image cache framework for iOS
  
 ### How to use
 
-# UIImageView+LBcategory.h
+# UIImageView+LBCategory.h
 - this UIImageView category offer the option to set a URL string of the image location on the server;
 - the image is downloaded asynchrnous in the background;
 - the image is saved on the disk in the caches directory;
@@ -36,7 +36,7 @@ There are 3 options to use:
 # LBCacheManager.h 
 This class is used by the UIImageView category for the download but you can use it directly. You can use methods from LBCacheManager to get the UIImage object from the disk or the path location where the image is cached.
 - <code>imagePathLocationForURLString:</code> - a string with the local path location of the image saved on disk or nil if the image for the URLString is not found.
-- <code>imageForURLString:</code> - same as UIImageView+LBcategory, search the UIImage directly in cache (memory or disk), nil is returned if not found.
+- <code>imageForURLString:</code> - same as UIImageView+LBCategory, search the UIImage directly in cache (memory or disk), nil is returned if not found.
 
 ```objective-c
 
@@ -57,7 +57,7 @@ This class is used by the UIImageView category for the download but you can use 
 
 ```
 
-# NSString+LBcategory.h
+# NSString+LBCategory.h
 You can use this class category to get hash value from a string.
 - there are 3 options available, <code>MD5, SHA1 and SHA256</code>
 

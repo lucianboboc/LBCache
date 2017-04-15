@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NSString+LBcategory.h"
+#import "NSString+LBCategory.h"
 
 /// kDefaultHashType is the method used to generate the hash which is used as the image name when saved on disk.
 #define kDefaultHashType HashTypeSHA1

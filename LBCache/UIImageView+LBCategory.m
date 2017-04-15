@@ -1,18 +1,18 @@
 //
-//  UIImageView+LBcategory.m
+//  UIImageView+LBCategory.m
 //  LBCache
 //
 //  Created by Lucian Boboc on 6/1/13.
 //  Copyright (c) 2013 Lucian Boboc. All rights reserved.
 //
 
-#import "UIImageView+LBcategory.h"
+#import "UIImageView+LBCategory.h"
 #import "LBCacheManager.h"
 #import <objc/runtime.h>
 
 static char operationKey;
 
-@implementation UIImageView (LBcategory)
+@implementation UIImageView (LBCategory)
 
 - (void) setImageWithURLString: (NSString *) urlString placeholderImage: (UIImage *) placeholderImage
 {

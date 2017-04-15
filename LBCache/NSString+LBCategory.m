@@ -1,15 +1,15 @@
 //
-//  NSString+LBcategory.m
+//  NSString+LBCategory.m
 //  LBCache
 //
 //  Created by Lucian Boboc on 6/1/13.
 //  Copyright (c) 2013 Lucian Boboc. All rights reserved.
 //
 
-#import "NSString+LBcategory.h"
+#import "NSString+LBCategory.h"
 #import <CommonCrypto/CommonCrypto.h>
 
-@implementation NSString (LBcategory)
+@implementation NSString (LBCategory)
 
 - (NSString*) lbHashMD5
 {

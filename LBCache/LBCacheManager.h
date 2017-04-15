@@ -16,7 +16,7 @@
 #endif
 
 #import <Foundation/Foundation.h>
-#import "UIImageView+LBcategory.h"
+#import "UIImageView+LBCategory.h"
 
 /// kDaysToKeepCache is the days duration the images will be kepped in cache.
 #define kDaysToKeepCache 3

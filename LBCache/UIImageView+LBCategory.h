@@ -1,5 +1,5 @@
 //
-//  UIImageView+LBcategory.h
+//  UIImageView+LBCategory.h
 //  LBCache
 //
 //  Created by Lucian Boboc on 6/1/13.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ImageOperation.h"
 
-@interface UIImageView (LBcategory)
+@interface UIImageView (LBCategory)
 
 
 /// The method will start the image download and image will be set after download is complete.
@@ -23,17 +23,17 @@
 ///
 /// @param urlString is an NSString with the url string where the image is located.
 /// @param placeholderImage is a UIImage with the image that will be used as a placeholder until the image was downloaded.
-/// @param options is an enum, `LBCacheImageOptions` option, which is used to decide how the image is loaded, from cache or web.
-- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option;
+/// @param options is an enum, `LBCacheImageOptions` options, which is used to decide how the image is loaded, from cache or web.
+- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) options;
 
 
 /// The method will start the image download and also return it in the completion block if download was successfull.
 ///
 /// @param urlString is an NSString with the url string where the image is located.
 /// @param placeholderImage is a UIImage with the image that will be used as a placeholder until the image was downloaded.
-/// @param options is an enum, `LBCacheImageOptions` option, which is used to decide how the image is loaded, from cache or web.
+/// @param options is an enum, `LBCacheImageOptions` options, which is used to decide how the image is loaded, from cache or web.
 /// @param completionBlock is an LBCacheOperationBlock callback which is used as a completion block for the ImageOperation.
-- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option completionBlock: (LBCacheImageBlock __nullable) completionBlock;
+- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) options completionBlock: (LBCacheImageBlock __nullable) completionBlock;
 
 
 
@@ -41,10 +41,10 @@
 ///
 /// @param urlString is an NSString with the url string where the image is located.
 /// @param placeholderImage is a UIImage with the image that will be used as a placeholder until the image was downloaded.
-/// @param options is an enum, `LBCacheImageOptions` option, which is used to decide how the image is loaded, from cache or web.
+/// @param options is an enum, `LBCacheImageOptions` options, which is used to decide how the image is loaded, from cache or web.
 /// @param progressBlock is an ProgressBlock callback which is used to pass the percent for the ImageOperation.
 /// @param completionBlock is an LBCacheOperationBlock callback which is used as a completion block for the ImageOperation.
-- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) option progressBlock: (ProgressBlock __nullable) progressBlock completionBlock: (LBCacheImageBlock __nullable) completionBlock;
+- (void) setImageWithURLString: (NSString * __nullable) urlString placeholderImage: (UIImage * __nullable) placeholderImage options: (LBCacheImageOptions) options progressBlock: (ProgressBlock __nullable) progressBlock completionBlock: (LBCacheImageBlock __nullable) completionBlock;
 
 
 /// The method will return the image object from the cache, memory or from the disk.

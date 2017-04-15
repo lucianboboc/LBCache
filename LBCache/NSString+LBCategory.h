@@ -1,5 +1,5 @@
 //
-//  NSString+LBcategory.h
+//  NSString+LBCategory.h
 //  LBCache
 //
 //  Created by Lucian Boboc on 6/1/13.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSString (LBcategory)
+@interface NSString (LBCategory)
 
 
 /// HashType enum is used as an option used for the hash type.
